@@ -16,6 +16,11 @@
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/web" />
         <option name="gradleHome" value="C:/gradle-4.7" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/web" />
+          </set>
+        </option>
       </GradleProjectSettings>
     </option>
   </component>
