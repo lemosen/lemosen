@@ -8,7 +8,9 @@
         <option name="gradleHome" value="C:/gradle-4.7" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/web" />
           </set>
         </option>
       </GradleProjectSettings>
@@ -18,6 +20,8 @@
         <option name="gradleHome" value="C:/gradle-4.7" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/web" />
           </set>
         </option>

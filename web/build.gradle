@@ -25,7 +25,13 @@ repositories {
 
 
 dependencies {
+    compile project(":core")
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.47'
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
 }
