@@ -21,3 +21,11 @@ module.exports = appInfo => {
 
     return config;
 };
+
+exports.mongoose = {
+    url: 'mongodb://127.0.0.1:27017/test',
+    options: {},
+    loadModel: true,
+    app: true,
+    agent: false,
+};
