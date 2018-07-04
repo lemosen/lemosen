@@ -14,7 +14,8 @@ import java.util.List;
 public class MainRestCtrl {
 
     List<UserMessage> messages;
-    String jsonFilePath = "e:/message.json";
+//    String jsonFilePath = "/Users/hfy/message.json";
+    String jsonFilePath = "/Users/hfy/message.json";
 
     public MainRestCtrl() {
         String datafromFile = JsonUtil.getDatafromFile(jsonFilePath);

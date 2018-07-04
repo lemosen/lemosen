@@ -6,10 +6,14 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core_main.iml" filepath="$PROJECT_DIR$/.idea/modules/core_main.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core_test.iml" filepath="$PROJECT_DIR$/.idea/modules/core_test.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/.idea/lemosen.iml" filepath="$PROJECT_DIR$/.idea/lemosen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-832248988/lemosen_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-832248988/lemosen_main.iml" group="lemosen" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/636341193/lemosen_main.iml" filepath="$PROJECT_DIR$/.idea/modules/636341193/lemosen_main.iml" group="lemosen" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-832248988/lemosen_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-832248988/lemosen_test.iml" group="lemosen" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/636341193/lemosen_test.iml" filepath="$PROJECT_DIR$/.idea/modules/636341193/lemosen_test.iml" group="lemosen" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/web.iml" filepath="$PROJECT_DIR$/.idea/modules/web.iml" group="web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2133607895/web_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-2133607895/web_main.iml" group="web" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/web_main.iml" filepath="$PROJECT_DIR$/.idea/modules/web_main.iml" group="web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2133607895/web_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-2133607895/web_test.iml" group="web" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/web_test.iml" filepath="$PROJECT_DIR$/.idea/modules/web_test.iml" group="web" />
     </modules>
   </component>
