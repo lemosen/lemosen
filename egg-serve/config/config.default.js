@@ -18,14 +18,12 @@ module.exports = appInfo => {
         pageSize: 5,
         serverUrl: 'https://hacker-news.firebaseio.com/v0',
     };
+    config.mongoose = {
+        client: {
+            url: 'mongodb://127.0.0.1:27017/test',
+            options: {},
+        },
+    };
 
     return config;
-};
-
-exports.mongoose = {
-    url: 'mongodb://127.0.0.1:27017/test',
-    options: {},
-    loadModel: true,
-    app: true,
-    agent: false,
 };

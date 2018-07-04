@@ -4,21 +4,26 @@
   "description": "lemosen create egg-serve test",
   "private": true,
   "dependencies": {
+    "await-first": "^1.0.0",
     "egg": "^2.2.1",
-    "egg-mongoose": "^3.0.0",
+    "egg-mongoose": "^3.1.0",
     "egg-scripts": "^2.5.0",
     "egg-view-nunjucks": "^2.2.0",
-    "mongoose": "^5.1.7"
+    "mongodb": "^3.1.0",
+    "mongoose": "^5.0.17"
   },
   "devDependencies": {
-    "autod": "^3.0.1",
-    "autod-egg": "^1.0.0",
-    "egg-bin": "^4.3.5",
-    "egg-ci": "^1.8.0",
-    "egg-mock": "^3.14.0",
-    "eslint": "^4.11.0",
-    "eslint-config-egg": "^6.0.0",
-    "webstorm-disable-index": "^1.2.0"
+    "@types/mongoose": "^5.0.18",
+    "autod": "^2.7.1",
+    "bluebird": "^3.5.1",
+    "dotenv": "^5.0.1",
+    "egg": "^1.0.0-rc.3",
+    "egg-bin": "^2.4.0",
+    "egg-mock": "^3.1.2",
+    "eslint": "^3.17.1",
+    "eslint-config-egg": "^3.2.0",
+    "supertest": "^3.0.0",
+    "webstorm-disable-index": "^1.1.2"
   },
   "engines": {
     "node": ">=8.9.0"

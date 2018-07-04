@@ -1,17 +1,19 @@
 <html>
 <head>
     <title>Hacker News</title>
-    <link rel="stylesheet" href="/public/css/news.css" />
+    <!--<link rel="stylesheet" href="/public/css/news.css" />-->
 </head>
 <body>
 <ul class="news-view view">
-<!--<ul >-->
-    {{newsList}}
-    <!--{% for item in list %}-->
-    <!--<li class="item">-->
-        <!--<a href="{{ item.url }}">{{ item.title }}</a>-->
-    <!--</li>-->
-    <!--{% endfor %}-->
+    <body>
+    <ul class="news-view view">
+        {% for item in list %}
+        <li class="item">
+            <p>{{ item.name }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    </body>
 </ul>
 </body>
 </html>
