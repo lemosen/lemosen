@@ -1,0 +1,45 @@
+server:
+    port: 4567
+spring:
+    datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.0.2:3306/yi?charset=utf8mb4&serverTimezone=UTC
+      username: root
+      password: 123456
+
+
+#    jackson:
+#       serialization: true
+#       serialization-inclusion: non_null
+#       date-format: yyyy/MM/dd HH:mm:ss
+
+    aop:
+      proxy-target-class: true
+    jpa:
+       database: MYSQL
+       # Show or not log for each sql query
+       show-sql: false
+       generate-ddl: false
+       hibernate:
+         # Hibernate ddl auto (none, validate, update, create, create-drop)
+         ddl-auto: none
+         naming:
+           physical-strategy: com.lemosen.core.orm.ImprovedPhysicalNamingStrategy
+
+
+       properties:
+         hibernate:
+           statement_inspector: com.lemosen.core.orm.ImprovedPhysicalNamingStrategy
+           dialect: org.hibernate.dialect.MySQL5Dialect
+           globally_quoted_identifiers: true
+           generate_statistics: false
+           cache:
+             #use_query_cache: true
+             use_second_level_cache: false
+             provider_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+#           search:
+#             default:
+#               directory_provider: org.hibernate.search.store.impl.FSDirectoryProvider
+#               indexBase: /disk/hibernate/${yi.cluster-name}
+#               lucene_version: LUCENE_5_5_4
+

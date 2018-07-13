@@ -1,3 +1,4 @@
 rootProject.name = 'lemosen'
 include 'core'
 include 'web'
+include 'admin'

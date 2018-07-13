@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.2.RELEASE'
+        springBootVersion = '2.0.3.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -25,13 +25,7 @@ repositories {
 
 
 dependencies {
-//    compile project(":core")
-    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.47'
-    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-    compile('org.springframework.boot:spring-boot-starter-web')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-}
+    compile project(":core")
 
-tasks.withType(JavaCompile){
-    options.encoding = "UTF-8"
+
 }

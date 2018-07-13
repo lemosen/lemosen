@@ -1,7 +1,9 @@
 server:
-      port: 1234
-      ssl:
-            key-store: lemosen.free.ngrok.cc.jks
-            key-store-password: 5059e18o2215
-            keyStoreType: JKS
-            keyAlias: lemosen.free.ngrok.cc
+    port: 1234
+    ssl:
+          key-store: lemosen.free.ngrok.cc.jks
+          key-store-password: 5059e18o2215
+          keyStoreType: JKS
+          keyAlias: lemosen.free.ngrok.cc
+spring:
+
