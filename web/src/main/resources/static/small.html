@@ -1,0 +1,245 @@
+<!DOCTYPE >
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"/>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >-->
+<TITLE>打气球--lemosen</TITLE>
+<style>
+
+    * {
+        background-color: #7d7d7d;
+        padding: 0;
+        margin: 0;
+        /*overflow-x:hidden;*/
+        /*overflow-y:hidden;*/
+
+    }
+
+    body {
+        width: 100%;
+        overflow-y: hidden; /*为了兼容普通PC的浏览器*/
+        height: 100%;
+        position: fixed;
+        /*background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531377799907&di=0ea1255550b1ec350e6bf583dc9cb103&imgtype=0&src=http%3A%2F%2Fcn.beenews.co%2Fuploads%2Farticle%2F4%2F2017%2F05%2F19%2FFZaOE9IXzZgK0YJG7UCFTPTW.jpg") no-repeat;*/
+        background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531813857062&di=b6b413346a51b30d51f7252db64fd1e0&imgtype=0&src=http%3A%2F%2Fimg.bimg.126.net%2Fphoto%2FDbH3_wqYtt49WbKNE6KPsQ%3D%3D%2F3409506392897642383.jpg") no-repeat;
+        background-size: 100% 100%;
+
+    }
+
+    .boolen {
+        z-index: 9999;
+        transform: rotate(-10deg);
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: aquamarine;
+        border-radius: 50% 40% 60%;
+        box-shadow: -10px -10px 5px darkseagreen inset;
+    }
+
+    .boolen:after {
+        transform: rotate(-10deg);
+        content: "";
+        width: 4%;
+        margin-top: 95px;
+        margin-left: 30%;
+        border: 6px solid transparent;
+        border-radius: 100%;
+        border-bottom-color: #62c4a1;
+        display: block;
+        position: absolute;
+    }
+
+    .boom {
+        height: 20px;
+        width: 100px;
+        /*display: block;*/
+        display: none;
+        position: absolute;
+        background-color: transparent;
+        color: #f12020;
+        font-size: 2rem;
+    }
+
+    .music {
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531815664544&di=c433d3008109bd06dc76ba1627e88dd6&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fbd3eb13533fa828b72d27a10f71f4134960a5a54.jpg") no-repeat;
+        background-size: 100% 100%;
+        /*background-color: #32db64;*/
+    }
+
+    .musicStop {
+        display: block;
+        background-color: red;
+        width: 3px;
+        height: 30px;
+        transform: rotate(-30deg);
+        position: absolute;
+        right: 30px;
+        top: 15px;
+        z-index: 999;
+        visibility: hidden;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .button {
+        float: left;
+        width: 60px;
+        height: 30px;
+        background-color: #488aff;
+        padding: 5px;
+        border: #6adbff 3px solid;
+        text-align: center;
+    }
+</style>
+<body scroll="no">
+<div class="music" onclick="isPlay()"></div>
+<div class="musicStop"></div>
+
+<div class="menu">
+    <div class="button" onclick="start()">start</div>
+    <div class="button" onclick="start()">restart</div>
+    <div class="button" onclick="hard()">hard</div>
+    <div class="button" onclick="easy()">easy</div>
+</div>
+<audio id="music" src="伟大航道.mp3" controls="controls" loop="false" hidden="true"></audio>
+<script>
+    let body = document.body;
+
+    let menu = document.getElementsByClassName("menu")[0]
+
+
+    let music = document.getElementsByClassName("musicStop")[0]
+
+    let play = true;
+
+    function isPlay() {
+        if (play) {
+            stopMusic()
+            music.style.visibility = "visible";
+        } else {
+            playMusic()
+            music.style.visibility = "hidden";
+        }
+        play = !play
+    }
+
+    function playMusic() {
+        document.getElementById('music').play();
+    }
+
+    function stopMusic() {
+        document.getElementById('music').pause();
+    }
+
+    playMusic();
+
+
+    const num = 10;
+    let clickNum = 0;
+
+    let moveInterval;
+
+    let intervalTime = 100;
+    let movePx = 1;
+
+    function easy() {
+        movePx = 1;
+        start()
+    }
+
+    function hard() {
+        movePx = 10;
+        start()
+    }
+
+
+    function start() {
+        clear();
+
+        menu.style.display = "none";
+
+        init();
+
+        move();
+
+        click();
+    }
+
+    function init() {
+
+        let fragment = new DocumentFragment()
+        for (let i = 0; i < num; i++) {
+            let newElement = document.createElement("div");
+            newElement.className = "boolen"
+            newElement.style.top = (50 + (Math.ceil(Math.random() * 200))) + "%";
+            newElement.style.left = (Math.ceil(Math.random() * 80)) + "%";
+            let p = document.createElement("p");
+            p.className = "boom";
+            p.innerText = "BOOM";
+            newElement.appendChild(p);
+
+            fragment.appendChild(newElement)
+        }
+
+        body.appendChild(fragment)
+    }
+
+    function move() {
+        moveInterval = setInterval(e => {
+            let boolens = document.getElementsByClassName("boolen");
+            let flag = false;
+            for (let i = 0; i < boolens.length; i++) {
+                let top = boolens[i].style.top.substring(0, boolens[i].style.top.length - 1) - movePx;
+                if (top > -30) {
+                    flag = true;
+                }
+                boolens[i].style.top = top + "%";
+            }
+            if (!flag) {
+                clear()
+            }
+
+        }, intervalTime)
+    }
+
+    function click() {
+        let boolens = document.getElementsByClassName("boolen");
+        for (let i = 0; i < boolens.length; i++) {
+            boolens[i].addEventListener('click', e => {
+                boolens[i].removeEventListener("click", e => {
+                });
+                boolens[i].style.visibility = "hidden";
+                boolens[i].firstChild.style.display = "inline";
+                boolens[i].firstChild.style.visibility = "visible";
+                clickNum++;
+                setTimeout(e => {
+                    boolens[i].firstChild.style.visibility = "hidden";
+                    if (clickNum === num) {
+                        clear()
+                    }
+                }, 1000)
+            })
+        }
+    }
+
+    function clear() {
+        menu.style.display = "block";
+
+        let boolens = document.getElementsByClassName("boolen");
+
+        for (let i = 0; i < boolens.length; i++) {
+            body.removeChild(boolens[i])
+        }
+        window.clearInterval(moveInterval);
+    }
+
+</script>
+</body>
+

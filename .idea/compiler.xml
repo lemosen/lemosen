@@ -5,6 +5,8 @@
       <module name="admin" target="1.8" />
       <module name="admin_main" target="1.8" />
       <module name="admin_test" target="1.8" />
+      <module name="base_main" target="1.8" />
+      <module name="base_test" target="1.8" />
       <module name="core_main" target="1.8" />
       <module name="core_test" target="1.8" />
       <module name="lemosen_main" target="1.8" />

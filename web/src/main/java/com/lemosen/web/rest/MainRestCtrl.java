@@ -1,7 +1,7 @@
 package com.lemosen.web.rest;
 
 import com.alibaba.fastjson.JSON;
-import com.lemosen.core.utils.JsonUtil;
+import com.lemosen.base.utils.JsonUtil;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

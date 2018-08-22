@@ -10,11 +10,25 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/admin" />
+            <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/web" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/base" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/admin" />
+            <option value="$PROJECT_DIR$/base" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/web" />
+          </set>
+        </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
@@ -24,6 +38,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/admin" />
+            <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/web" />
           </set>
@@ -38,6 +53,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/admin" />
+            <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/web" />
           </set>

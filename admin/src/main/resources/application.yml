@@ -18,13 +18,18 @@ spring:
     jpa:
        database: MYSQL
        # Show or not log for each sql query
-       show-sql: false
-       generate-ddl: false
+       show-sql: true
+#       generate-ddl: false
        hibernate:
          # Hibernate ddl auto (none, validate, update, create, create-drop)
-         ddl-auto: none
+         ddl-auto: update
+#         naming-strategy : com.lemosen.core.orm.ImprovedPhysicalNamingStrategy
          naming:
-           physical-strategy: com.lemosen.core.orm.ImprovedPhysicalNamingStrategy
+#            strategy: org.hibernate.cfg.ImprovedNamingStrategy
+#            strategy： org.hibernate.cfg.ImprovedNamingStrategy
+            physical-strategy: com.lemosen.core.orm.ImprovedPhysicalNamingStrategy
+            implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+#           physical-strategy： org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
 
        properties:

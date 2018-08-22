@@ -25,7 +25,7 @@ repositories {
 
 
 dependencies {
-//    compile project(":core")
+    compile project(":base")
     compile group: 'com.alibaba', name: 'fastjson', version: '1.2.47'
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.boot:spring-boot-starter-web')
