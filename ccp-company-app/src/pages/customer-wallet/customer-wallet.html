@@ -1,0 +1,67 @@
+<!--
+  Generated template for the CustomerWalletPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>我的钱包</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="openBills()">账单</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <!--<ion-card-header>-->
+      <!--<p>{{walletVO?.debtAccounts}}</p>-->
+      <!--<p>余额</p>-->
+    <!--</ion-card-header>-->
+    <ion-card-content>
+      <ion-row class="score-row">
+        <ion-col>
+          <p>{{walletVO?.totalBanlance}}</p>
+          <p>总余额</p>
+        </ion-col>
+        <ion-col>
+          <p>{{walletVO?.prePayment}}</p>
+          <p>应付款</p>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <!--<ion-list class="common-list">-->
+    <!--&lt;!&ndash;<ion-item *ngFor="let withdraw of withdraws">&ndash;&gt;-->
+      <!--&lt;!&ndash;<ion-label><h4>{{withdraw?.margin}}</h4><p>{{withdraw?.createTime}}</p></ion-label>&ndash;&gt;-->
+      <!--&lt;!&ndash;<ion-label style="text-align: right" item-right>{{withdraw?.withdrawalState |translate}}</ion-label>&ndash;&gt;-->
+    <!--&lt;!&ndash;</ion-item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<ion-item >&ndash;&gt;-->
+      <!--&lt;!&ndash;<ion-label><ion-icon name="card"></ion-icon>银行卡</ion-label>&ndash;&gt;-->
+    <!--&lt;!&ndash;</ion-item>&ndash;&gt;-->
+    <!--<ion-item (click)="openAlipay()">-->
+      <!--<ion-label>支付宝帐号</ion-label>-->
+    <!--</ion-item>-->
+    <!--<ion-item (click)="openWeixin()">-->
+      <!--<ion-label>微信帐号</ion-label>-->
+    <!--</ion-item>-->
+  <!--</ion-list>-->
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col style="padding: 0">
+      <button clear block ion-button class="footer-button clear-button" (click)="chooseNoneTicket()">
+        充值
+      </button>
+    </ion-col>
+    <!--<ion-col style="padding: 0">-->
+      <!--<button clear block ion-button class="footer-button ok-button" (click)="applyWithdraw()">-->
+        <!--提现-->
+      <!--</button>-->
+    <!--</ion-col>-->
+  </ion-row>
+</ion-footer>

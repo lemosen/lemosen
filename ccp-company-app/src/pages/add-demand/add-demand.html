@@ -1,0 +1,99 @@
+<!--
+  Generated template for the AddDemandPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>新建任务</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list class="form-list">
+        <form [formGroup]="formGroup">
+            <ion-item-group>
+                <ion-item-divider>任务信息</ion-item-divider>
+                <ion-item>
+                    <ion-label>任务名称</ion-label>
+                    <ion-input type="text" formControlName="demandName" placeholder="请输入任务名" maxlength="32"></ion-input>
+                    <div *ngIf="formGroup.controls['demandName'].invalid && formGroup.controls['demandName'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['demandName'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+                <ion-item (click)="presentCategory()">
+                    <ion-label>任务分类</ion-label>
+                    <ion-note item-right>{{formGroup.value.demandCategory.categoryName}}</ion-note>
+                </ion-item>
+                <ion-item-divider>所需技能</ion-item-divider>
+                <ion-item *ngFor="let skill of selectCategory?.skills" (click)="selectFormSkillLevel(skill)">
+                    <ion-label>{{skill?.skillName}}</ion-label>
+                    <ion-note  item-right>{{skill?.check?skill.selectSkillLevelName:'未选择'}}</ion-note>
+                </ion-item>
+                <ion-item>
+                    <ion-label>指定软件</ion-label>
+                    <ion-input type="text" formControlName="specifiedSoftware" placeholder="请输入软件名称" maxlength="32"></ion-input>
+                    <div *ngIf="formGroup.controls['specifiedSoftware'].invalid && formGroup.controls['specifiedSoftware'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['specifiedSoftware'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <ion-label>任务预算(元)</ion-label>
+                    <ion-input type="number" (input)="positiveInteger('budgetPrice',$event)"  formControlName="budgetPrice" placeholder="请输入预算金额" maxlength="16"></ion-input>
+                    <div *ngIf="formGroup.controls['budgetPrice'].invalid && formGroup.controls['budgetPrice'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['budgetPrice'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <ion-label>任务周期(天)</ion-label>
+                    <ion-input type="number" (input)="positiveInteger('demandCycle',$event)" formControlName="demandCycle" placeholder="*请再次输入任务周期" maxlength="16"></ion-input>
+                    <div *ngIf="formGroup.controls['demandCycle'].invalid && formGroup.controls['demandCycle'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['demandCycle'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>竞标截止日期</ion-label>
+                    <ion-datetime displayFormat="YYYY-MM-DD" [min]="minDate" [max]="maxDate" doneText="确定" cancelText="取消"  formControlName="abortDate" pickerFormat="YYYY MM DD" placeholder="*请选择竞标截止日期"></ion-datetime>
+                    <div *ngIf="formGroup.controls['abortDate'].invalid && formGroup.controls['abortDate'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['abortDate'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>任务简介</ion-label>
+                    <ion-textarea rows="5" formControlName="summary" type="text" placeholder="请输入简介" maxlength="255"></ion-textarea>
+                    <div *ngIf="formGroup.controls['summary'].invalid && formGroup.controls['summary'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['summary'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <ion-label>任务需求说明</ion-label>
+                    <ion-textarea rows="5" formControlName="detailInfo" type="text" placeholder="请输入作品描述" maxlength="1024"></ion-textarea>
+                    <div *ngIf="formGroup.controls['detailInfo'].invalid && formGroup.controls['detailInfo'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['detailInfo'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+            </ion-item-group>
+        </form>
+    </ion-list>
+
+</ion-content>
+<ion-footer >
+    <ion-row>
+        <ion-col col-6>
+            <button class="footer-button" full ion-button [disabled]="!formGroup.valid&&!submitted" block color="primary"
+                    (click)="onSubmit(true)">保存
+            </button>
+        </ion-col>
+        <ion-col col-6>
+            <button class="footer-button" full ion-button [disabled]="!formGroup.valid&&!submitted" block color="red"
+                    (click)="onSubmit(false)">提交审核
+            </button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

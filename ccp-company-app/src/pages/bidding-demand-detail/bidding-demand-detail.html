@@ -1,0 +1,75 @@
+<!--
+  Generated template for the BiddingDemandDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>正在招标的任务</ion-title>
+        <ion-buttons end>
+            <button ion-button *ngIf="showAddExpert" (click)="addExpert(demand)">邀请专家</button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <demand-content [demand]="demand"></demand-content>
+    <ion-list class="common-list">
+        <!--<ion-item-group *ngIf="winBid">-->
+            <!--<ion-item-divider>-->
+                <!--中标设计师列表-->
+            <!--</ion-item-divider>-->
+            <!--<ion-item (click)="designerInfo(winBid)">-->
+                <!--<ion-avatar item-start>-->
+                    <!--<img src="{{imgUrl}}/designer/{{winBid?.customer.portraitUrl}}" onerror="this.src='assets/imgs/avatar.png'">-->
+                <!--</ion-avatar>-->
+                <!--<h4>{{winBid?.customer.customerName}}</h4>-->
+            <!--</ion-item>-->
+        <!--</ion-item-group>-->
+        <ion-item-group *ngIf="invites&&invites.length!=0">
+            <ion-item-divider>
+                邀请专家列表
+            </ion-item-divider>
+            <ion-item *ngFor="let invite of invites"  (click)="inviteInfo(invite)">
+                <ion-avatar item-start>
+                    <img src="{{imgUrl}}/designer/{{invite?.expert.portraitUrl}}" onerror="this.src='assets/imgs/avatar.png'">
+                </ion-avatar>
+                <ion-label><h4>{{invite?.expert.customerName}}</h4></ion-label>
+                <p item-content> {{invite?.inviteState|translate}}</p>
+            </ion-item>
+        </ion-item-group>
+        <ion-item-group *ngIf="bids&&bids.length!=0">
+            <ion-item-divider>
+                投标设计师列表
+                <ion-icon item-right name="refresh" (click)="refresh()"></ion-icon>
+            </ion-item-divider>
+            <ion-item *ngFor="let bid of bids" (click)="designerInfo(bid)">
+                <ion-avatar item-start>
+                    <img src="{{imgUrl}}/designer/{{bid?.customer.portraitUrl}}" onerror="this.src='assets/imgs/avatar.png'">
+                </ion-avatar>
+                <h4>{{bid?.customer.customerName}}</h4>
+                <ion-icon item-right *ngIf="bid?.winBidding" style="color: #efa724;" name="star"></ion-icon>
+            </ion-item>
+        </ion-item-group>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
+<ion-footer class="footer-toolbar">
+    <ion-toolbar>
+        <!--<button ion-button outline small class="small-grey-button">-->
+        <!--<div>联系客服</div>-->
+        <!--</button>-->
+        <!--<button ion-button outline small class="small-grey-button">-->
+        <!--<div>在线申诉</div>-->
+        <!--</button>-->
+        <button ion-button outline small *ngIf="!demandState" (click)="openReserve(demand.demandId,demand.demandState)">
+            <div>查看合同</div>
+        </button>
+
+    </ion-toolbar>
+</ion-footer>

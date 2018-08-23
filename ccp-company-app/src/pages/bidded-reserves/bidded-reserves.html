@@ -1,0 +1,45 @@
+<!--
+  Generated template for the BiddedReservesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>合同列表</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <no-data-show [objs]="contracts" [text]="'暂无合同！'"></no-data-show>
+  <ion-card *ngFor="let contract of contracts" class="common-card demand-card">
+    <ion-card-content (click)="openContractDetail(contract.contractId)">
+      <ion-item class="content-item">
+        <!--<ion-avatar item-start>-->
+          <!--<img src="{{imgUrl}}{{contract?.demand.imageUrls[0]}}">-->
+        <!--</ion-avatar>-->
+        <h3>{{contract.contractName}}</h3>
+        <p>{{contract.remark}}</p>
+        <!--<p class="large-price">￥{{bid.demand.budgetPrice}}-->
+        <!--</p>-->
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<!--<ion-footer *ngIf="demandState=='REVIEW_CONTRACT'">-->
+  <!--<ion-row>-->
+    <!--<ion-col col-6>-->
+      <!--<button class="footer-button" full ion-button color="red"-->
+              <!--(click)="onSubmit(false)">拒绝-->
+      <!--</button>-->
+    <!--</ion-col>-->
+    <!--<ion-col col-6>-->
+      <!--<button class="footer-button" full ion-button color="primary"-->
+              <!--(click)="onSubmit(true)">同意-->
+      <!--</button>-->
+    <!--</ion-col>-->
+  <!--</ion-row>-->
+<!--</ion-footer>-->

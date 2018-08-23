@@ -1,0 +1,19 @@
+page-topics {
+    .topic-list {
+        ion-item {
+            min-height: 3.8rem !important;
+        }
+        button{
+            min-height: 5.2rem !important;
+            span{
+                font-size: 1.2rem;
+            }
+        }
+        ion-label {
+            margin: 6px 8px 6px 0;
+            p {
+                font-size: 1.3rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,91 @@
+<!--
+  Generated template for the AddEvaluatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>我要评价</ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="onSubmit()" [disabled]="!formGroup.valid&&!submitted">保存</button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <form [formGroup]="formGroup">
+        <ion-list class="form-list">
+            <ion-item-group>
+                <ion-item>
+                    <ion-label>任务名称</ion-label>
+                    <ion-note item-content>{{formGroup.value?.demand?.demandName}}</ion-note>
+                    <ion-note *ngIf="!formGroup.value.demand" item-right>请选择</ion-note>
+                </ion-item>
+                <ion-item *ngIf="isExpert" (click)="chooseExport()">
+                    <ion-label>选择专家</ion-label>
+                    <ion-note item-content>{{selectExpert?.customerName}}</ion-note>
+                    <ion-note *ngIf="!selectExpert?.customerName" item-right>请选择</ion-note>
+                </ion-item>
+                <ion-item>
+                    <ion-label>评星</ion-label>
+                </ion-item>
+                <ion-item>
+                    <div item-content class="star-div" (click)="chooseStar($event,'starMark')">
+                        <div *ngFor="let scoreMap of starMark.starMap; let indx = index">
+                            <ion-icon name="star" color="chrome3" *ngIf="starMark.star>=indx+1;" style="padding-right: .5em" [attr.data-index]="indx+1"></ion-icon>
+                            <ion-icon name="star-outline" color="chrome3" *ngIf="starMark.star<indx+1;" style="padding-right: .5em" [attr.data-index]="indx+1"></ion-icon>
+                        </div>
+                    </div>
+                    <div *ngIf="formGroup.controls['starMark'].invalid && formGroup.controls['starMark'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['starMark'].errors|errorMessage}}
+                    </div>
+
+                </ion-item>
+                <ion-item>
+                    <ion-label>态度</ion-label>
+                </ion-item>
+                <ion-item>
+                    <div item-content class="star-div" (click)="chooseStar($event,'attitude')">
+                        <div *ngFor="let scoreMap of attitude.starMap; let indx = index">
+                            <ion-icon name="star" color="chrome3" *ngIf="attitude.star>=indx+1;" style="padding-right: .5em" [attr.data-index]="indx+1"></ion-icon>
+                            <ion-icon name="star-outline" color="chrome3" *ngIf="attitude.star<indx+1;" style="padding-right: .5em" [attr.data-index]="indx+1"></ion-icon>
+                        </div>
+                    </div>
+                    <div *ngIf="formGroup.controls['attitude'].invalid && formGroup.controls['attitude'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['attitude'].errors|errorMessage}}
+                    </div>
+
+                </ion-item>
+                <ion-item>
+                    <ion-label>响应度</ion-label>
+                </ion-item>
+                <ion-item>
+                    <div item-content class="star-div" (click)="chooseStar($event,'responsibility')">
+                        <div *ngFor="let scoreMap of responsibility.starMap; let indx = index">
+                            <ion-icon name="star" color="chrome3" *ngIf="responsibility.star>=indx+1;" style="padding-right: .5em" [attr.data-index]="indx+1"></ion-icon>
+                            <ion-icon name="star-outline" color="chrome3" *ngIf="responsibility.star<indx+1;" style="padding-right: .5em" [attr.data-index]="indx+1"></ion-icon>
+                        </div>
+                    </div>
+                    <div *ngIf="formGroup.controls['responsibility'].invalid && formGroup.controls['responsibility'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['responsibility'].errors|errorMessage}}
+                    </div>
+
+                </ion-item>
+                <ion-item>
+                    <ion-label>内容</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-textarea rows="5" formControlName="evaluateContent" placeholder="请输入内容"></ion-textarea>
+                    <div *ngIf="formGroup.controls['evaluateContent'].invalid && formGroup.controls['evaluateContent'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['evaluateContent'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+            </ion-item-group>
+        </ion-list>
+
+    </form>
+</ion-content>

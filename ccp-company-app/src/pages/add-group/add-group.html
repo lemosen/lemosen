@@ -1,0 +1,69 @@
+<!--
+  Generated template for the AddGroupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>添加群组</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list class="form-list">
+        <form [formGroup]="formGroup">
+            <ion-item-group>
+                <ion-item>
+                    <ion-label>群名称</ion-label>
+                    <ion-input type="text" formControlName="naturalName" placeholder="请输入群名" maxlength="128"></ion-input>
+                    <div *ngIf="formGroup.controls['naturalName'].invalid && formGroup.controls['naturalName'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['naturalName'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+                <ion-item (click)="chooseDemand()">
+                    <ion-label>选择任务</ion-label>
+                    <ion-note item-right>{{formGroup.value.demand?.demandName}}</ion-note>
+                    <ion-note *ngIf="!formGroup.value.demand" item-right>请选择</ion-note>
+                </ion-item>
+                <ion-item (click)="addMember()">选择成员</ion-item>
+                <ion-item (click)="addMember()" *ngFor="let author of formGroup.value.authors">
+                    <ion-avatar item-start>
+                        <img [src]="imgFace+author?.portraitUrl" onerror="this.src='assets/imgs/avatar.png'">
+                    </ion-avatar>
+                    <ion-label>{{author.authorName}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="formGroup.value.members&&formGroup.value.members.length==0" (click)="addMember()">
+                    <ion-note item-right>请选择</ion-note>
+                </ion-item>
+                <ion-item (click)="chooseAvatar()">
+                    <ion-label>群头像</ion-label>
+                    <ion-avatar *ngIf="formGroup.value.avatarImg!=''" item-right>
+                        <img src="{{imgUrl}}{{formGroup.value.avatarImg}}" onerror="this.src='assets/imgs/avatar.png'">
+                    </ion-avatar>
+                    <ion-note *ngIf="formGroup.value.avatarImg==''" item-right>请选择</ion-note>
+                </ion-item>
+                <ion-item>
+                    <ion-label>群简介</ion-label>
+                    <ion-textarea rows="5" formControlName="description" type="text" placeholder="请输入简介" maxlength="255"></ion-textarea>
+                    <div *ngIf="formGroup.controls['description'].invalid && formGroup.controls['description'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['description'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+
+            </ion-item-group>
+        </form>
+    </ion-list>
+</ion-content>
+<ion-footer>
+    <ion-row>
+        <ion-col>
+            <button class="footer-button" full ion-button [disabled]="!formGroup.valid&&!submitted" block color="primary"
+                    (click)="onSubmit()">添加
+            </button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

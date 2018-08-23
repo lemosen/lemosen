@@ -1,0 +1,65 @@
+<!--
+  Generated template for the BillsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <!--<ion-title>账单记录</ion-title>-->
+        <ion-segment [(ngModel)]="billType">
+            <ion-segment-button value="withdraws">
+                交易记录
+            </ion-segment-button>
+            <ion-segment-button value=" ">
+                应付款记录
+            </ion-segment-button>
+        </ion-segment>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="下拉刷新"
+                refreshingSpinner="circles"
+                refreshingText="正在加载...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <ion-list class="common-list" *ngIf="billType=='withdraws'">
+        <no-data-show *ngIf="billType=='withdraws'" [objs]="withdraws" [text]="'暂无记录！'"></no-data-show>
+        <ion-item *ngFor="let withdraw of withdraws">
+            <ion-label>
+                <h4>{{withdraw?.detailContent}}</h4>
+                <p>{{withdraw?.transactionPrice>0?'+'+withdraw?.transactionPrice:withdraw?.transactionPrice}}</p>
+            </ion-label>
+            <ion-label style="text-align: right" item-right>
+                <h4>总余额{{withdraw?.countBalance}}</h4>
+                <p>{{withdraw?.createTime}}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-list class="common-list" *ngIf="billType!='withdraws'">
+        <!--<h3 *ngIf="!objs||objs.length==0" style="margin-top: 30%;text-align: center">{{text}}</h3>-->
+        <no-data-show *ngIf="billType!='withdraws'" [objs]="debtPayables" [text]="'暂无记录！'"></no-data-show>
+        <ion-item *ngFor="let debtPayable of debtPayables">
+            <ion-label>
+                <h4>¥ {{debtPayable?.debtAccount}}</h4>
+                <p>{{debtPayable?.demandName}}</p>
+            </ion-label>
+            <ion-label style="text-align: right" item-right>
+                <h4>{{debtPayable?.payType |translate}}</h4>
+                <p>{{debtPayable?.createTime}}</p>
+            </ion-label>
+
+
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

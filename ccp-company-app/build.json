@@ -1,0 +1,13 @@
+{
+
+  "android": {
+    "release": {
+      "keystore": "/Users/lemosen/Desktop/ccp/microlink.jks",
+      "storePassword": "microlink",
+      "alias": "microlink",
+      "password" : "microlink",
+      "keystoreType": ""
+    }
+  }
+}
+

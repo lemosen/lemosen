@@ -1,0 +1,71 @@
+<!--
+  Generated template for the BidDemandPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>投标</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list class="common-list">
+        <ion-item-group>
+            <ion-item-divider>任务信息</ion-item-divider>
+            <ion-item>
+                <ion-label>{{demand.demandName}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>预算价格</ion-label>
+                <p item-content class="large-price">￥{{demand?.budgetPrice}}</p>
+            </ion-item>
+            <ion-item>
+                <ion-label>完成周期</ion-label>
+                <p item-content>{{demand?.demandCycle}}天</p>
+            </ion-item>
+            <ion-item>
+                <ion-label>投标截止日期</ion-label>
+                <p item-content>{{demand?.abortDate}}</p>
+            </ion-item>
+            <ion-item>
+                <ion-label>所需技能</ion-label>
+                <p item-content><span *ngFor="let skillLevel of demand?.skillLevels">{{skillLevel.levelName}} </span></p>
+            </ion-item>
+        </ion-item-group>
+        <form [formGroup]="formGroup">
+        <ion-item-group >
+            <ion-item-divider>投标信息</ion-item-divider>
+            <ion-item>
+                <ion-label>竞标价格</ion-label>
+                <ion-input (input)="positiveInteger('bidPrice',$event)" formControlName="bidPrice" type="number" placeholder="请输入竞标价格"></ion-input>
+                <div *ngIf="formGroup.controls['bidPrice'].invalid && formGroup.controls['bidPrice'].dirty"
+                     class="error-tip" item-content>{{ formGroup.controls['bidPrice'].errors|errorMessage}}
+                </div>
+            </ion-item>
+            <ion-item>
+                <ion-label>预计完成周期</ion-label>
+                <ion-input (input)="positiveInteger('bidCycle',$event)" formControlName="bidCycle" type="number" placeholder="请输入预计完成周期"></ion-input>
+                <div *ngIf="formGroup.controls['bidCycle'].invalid && formGroup.controls['bidCycle'].dirty"
+                     class="error-tip" item-content>{{ formGroup.controls['bidCycle'].errors|errorMessage}}
+                </div>
+            </ion-item>
+            <ion-item style="min-height: 10rem!important;">
+                <ion-textarea  rows="5" formControlName="detailInfo" placeholder="请输入描述信息"></ion-textarea>
+                <div *ngIf="formGroup.controls['detailInfo'].invalid && formGroup.controls['detailInfo'].dirty"
+                     class="error-tip" item-content>{{ formGroup.controls['detailInfo'].errors|errorMessage}}
+                </div>
+            </ion-item>
+        </ion-item-group>
+        </form>
+    </ion-list>
+    <p style="text-align: center;margin: 0 1rem">
+        <button ion-button clear class="block-button" block [disabled]="!formGroup.valid" (click)="submitBid()">
+            提交
+        </button>
+    </p>
+</ion-content>

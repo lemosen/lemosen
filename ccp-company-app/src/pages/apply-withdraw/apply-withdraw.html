@@ -1,0 +1,56 @@
+<!--
+  Generated template for the ApplyWithdrawPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>提现申请</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list class="form-list">
+    <form [formGroup]="formGroup">
+      <ion-item-group>
+        <ion-item-divider>提现申请信息</ion-item-divider>
+        <ion-item>
+          <ion-label>余额</ion-label>
+          <ion-input type="number" formControlName="debtBalance" maxlength="16" readonly="true"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>申请提现额</ion-label>
+          <ion-input type="number" formControlName="applyBalance" maxlength="16" readonly="true"></ion-input>
+        </ion-item>
+        <!--<ion-item>-->
+          <!--<ion-label>已提现额</ion-label>-->
+          <!--<ion-input type="text" formControlName="withdrawalAccount" readonly="true" maxlength="16" readonly="true"></ion-input>-->
+        <!--</ion-item>-->
+        <ion-item>
+          <ion-label>申请额度</ion-label>
+          <ion-input type="number" formControlName="withdrawalAccount" placeholder="请输入正确申请额度" maxlength="16"></ion-input>
+          <div *ngIf="formGroup.controls['withdrawalAccount'].invalid && formGroup.controls['withdrawalAccount'].dirty"
+               class="error-tip" item-content>{{ formGroup.controls['withdrawalAccount'].errors|errorMessage}}
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-label>提现说明</ion-label>
+          <ion-input type="text" formControlName="detailContent" placeholder="请输入提现说明" maxlength="16"></ion-input>
+          <div *ngIf="formGroup.controls['detailContent'].invalid && formGroup.controls['detailContent'].dirty"
+               class="error-tip" item-content>{{ formGroup.controls['detailContent'].errors|errorMessage}}
+          </div>
+        </ion-item>
+
+      </ion-item-group>
+    </form>
+  </ion-list>
+  <p style="text-align: center;margin: 0 1rem">
+    <button ion-button clear class="block-button" [disabled]="!formGroup.valid&&!submitted" block (click)="onSubmit()">
+      提交申请
+    </button>
+  </p>
+</ion-content>

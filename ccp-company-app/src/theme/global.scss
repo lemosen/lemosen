@@ -1,0 +1,38 @@
+.demand-card {
+    ion-avatar {
+        img {
+            width: 9rem;
+            height: 7rem;
+            border-radius: 5%;
+        }
+    }
+    .large-price {
+        span {
+            color: color($font-colors, dark-grey);
+            font-size: 1.3rem;
+        }
+        .reserve {
+            padding-left: 1rem;
+        }
+    }
+    .title {
+        line-height: 2.4rem;
+        padding-left: 1rem;
+        span {
+            margin-left: 1rem;
+            color: color($font-colors, dark-grey);
+            border: 1px solid color($font-colors, dark-grey);
+            font-size: 1.3rem;
+            padding: 3px;
+            border-radius: 3px;
+        }
+    }
+    .content-item {
+        border-bottom: none !important;
+        padding: 0;
+        p{
+            font-size: 1.3rem;
+        }
+    }
+
+}

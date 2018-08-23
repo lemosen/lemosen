@@ -1,0 +1,75 @@
+<!--
+  Generated template for the EditProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>企业资料</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list class="form-list">
+        <form [formGroup]="formGroup">
+            <ion-item-group>
+                <ion-item-divider>基本信息</ion-item-divider>
+                <ion-item>
+                    <ion-label>用户名</ion-label>
+                    <ion-input type="text" formControlName="accountName" placeholder="请输入用户名" maxlength="16" readonly="true"></ion-input>
+                    <div *ngIf="formGroup.controls['accountName'].invalid && formGroup.controls['accountName'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['accountName'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>手机</ion-label>
+                    <ion-input type="text" formControlName="mobile" placeholder="请输入手机号" maxlength="16" readonly="true"></ion-input>
+                    <div *ngIf="formGroup.controls['mobile'].invalid && formGroup.controls['mobile'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['mobile'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <ion-label>邮箱</ion-label>
+                    <ion-input type="text" formControlName="email" placeholder="请输入邮箱" maxlength="16"></ion-input>
+                    <div *ngIf="formGroup.controls['email'].invalid && formGroup.controls['email'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['email'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+
+                <ion-item (click)="presentEducation()">
+                    <ion-label>经营范围</ion-label>
+                    <ion-note item-right>{{formGroup.value.companyScope |translate}}</ion-note>
+                </ion-item>
+
+            </ion-item-group>
+            <ion-item-group>
+                <ion-item-divider>其它信息</ion-item-divider>
+                <ion-item>
+                    <ion-label>摘要信息</ion-label>
+                    <ion-textarea rows="5" formControlName="summary" type="text" placeholder="请输入简介" maxlength="255"></ion-textarea>
+                    <div *ngIf="formGroup.controls['introduce'].invalid && formGroup.controls['introduce'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['introduce'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <ion-label>企业描述</ion-label>
+                    <ion-textarea rows="5" formControlName="introduce" type="text" placeholder="请输入作品描述" maxlength="255"></ion-textarea>
+                    <div *ngIf="formGroup.controls['introduce'].invalid && formGroup.controls['introduce'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['introduce'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+            </ion-item-group>
+        </form>
+    </ion-list>
+    <p style="text-align: center;margin: 0 1rem">
+        <button ion-button clear class="block-button" [disabled]="!formGroup.valid&&!submitted" block (click)="onSubmit()">
+            保存
+        </button>
+    </p>
+</ion-content>
+

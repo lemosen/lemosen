@@ -1,0 +1,40 @@
+page-customer-wallet {
+
+    .ok-button{
+        color: $white!important;
+        background-color: color($colors,primary)!important;
+        margin:0;
+        padding: 0;
+    }
+    .clear-button{
+        color: $white!important;
+        background-color: color($colors,primary)!important;
+        //background-color: color($colors,secondary)!important;
+        margin:0;
+        padding: 0;
+    }
+
+    .score-row{
+        text-align: center;
+        //border-bottom: 2px solid $white-c !important;
+        ion-col{
+            background-color: $white;
+            padding: 8px;
+            border-right: 0.55px solid $white-c !important;
+            font-size: 1.3rem;
+        }
+    }
+    ion-card-header{
+        text-align: center;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    ion-card{
+        -o-border-radius: 5%!important;
+        -ms-border-radius: 5%!important;
+        -moz-border-radius: 5%!important;
+        -webkit-border-radius: 5%!important;
+    }
+    ion-card-content{
+        padding: 0!important;
+    }
+}

@@ -1,0 +1,17 @@
+page-home {
+  .dym-title{
+    background-color: $white;
+    border-bottom: 0.15px solid $border-color  !important;
+  }
+  .dym-card{
+    margin-top: 0;
+    ion-item{
+      p{
+        font-size: 1.3rem;
+      }
+    }
+    ion-card-content{
+      font-size: 1.3rem;
+    }
+  }
+}

@@ -1,0 +1,119 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{chatItem.friendName}}</ion-title>
+        <ion-buttons end>
+            <button icon-only ion-button (click)="openGroupDetail()">
+                <ion-icon name="ios-people">
+                </ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content style="background: #EBEBEB; padding-top: 12px">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div *ngFor="let item of chatItem.chatLogList" class="message-wrapper"
+         on-hold="onMessageHold($event, $index, message)">
+
+        <div text-center>
+            <ion-badge color="dark-light" style="color:#ffffff;">{{item.createDate | chatDateTimPipe|translate}}
+            <!--<ion-badge color="dark-light" style="color:#ffffff;">{{item.createDate }}-->
+            </ion-badge>
+        </div>
+
+        <div *ngIf="item.sender != myOfAccount">
+            <!--<img class="profile-pic left" [src]="getAvatar(item.sender)|avatarPipe"/>-->
+            <!--<img class="profile-pic left" [src]="getAvatar(item.sender)"/>-->
+            <img class="profile-pic left" [src]="'assets/imgs/avatar.png'"/>
+            <!--  wave-->
+            <div class="chat-bubble left slide-left">
+                <div class="message"
+                     [innerHTML]="item.content">
+                </div>
+                <!--<div *ngIf="!item.content.startsWith('@#*')" class="message"-->
+                <!--[innerHTML]="item.content | messageWrapPipe" autolinker>-->
+                <!--</div>-->
+                <!--<div *ngIf="item.content.startsWith('@#*IMAGE*#@')" class="message">-->
+                <!--<img [src]="item.content | messageJsonPipe:['filePath'] | previewImagePipe" (click)="picView($event)"/>-->
+                <!--</div>-->
+                <!--<div *ngIf="item.content.startsWith('@#*FILE*#@')" class="message">-->
+                <!--<img class="file right" [src]="item.content | messageJsonPipe:['fileType'] | fileImagePipe:[item.content | messageJsonPipe:['filePath']]" (click)="picView($event)"/>-->
+                <!--<div class="file-info right">-->
+                <!--<a [href]="(item.content | messageJsonPipe:['filePath']) + '&d=true'">{{item.content | messageJsonPipe:['fileName']}}-->
+                <!--</a>-->
+                <!--<p no-margin>&nbsp;</p>-->
+                <!--<p no-margin style="color: #8b8b8b; font-size: 1rem">{{item.content | messageJsonPipe:['fileSize'] | fileSizePipe}}</p>-->
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+
+        <div *ngIf="item.sender === myOfAccount">
+            <!--<img class="profile-pic right" [src]="myAvatar |avatarPipe"/>-->
+            <img class="profile-pic right" [src]="'assets/imgs/avatar.png'"/>
+            <div class="chat-bubble right slide-right">
+                <!--<div *ngIf="!item.content.startsWith('@#*')" class="message"-->
+                <!--[innerHTML]="item.content | messageWrapPipe" autolinker>-->
+                <!--</div>-->
+                <div class="message"
+                     [innerHTML]="item.content">
+                </div>
+                <!--<div *ngIf="item.content.startsWith('@#*IMAGE*#@')" class="message">-->
+                <!--<img [src]="item.content | messageJsonPipe:['filePath'] | previewImagePipe" (click)="picView($event)"/>-->
+                <!--</div>-->
+                <!--<div *ngIf="item.content.startsWith('@#*FILE*#@')" class="message">-->
+                <!--<img class="file right" [src]="item.content | messageJsonPipe:['fileType'] | fileImagePipe:[item.content | messageJsonPipe:['filePath']]" (click)="picView($event)"/>-->
+                <!--<div class="file-info right">-->
+                <!--<a [href]="(item.content | messageJsonPipe:['filePath']) + '&d=true'">{{item.content | messageJsonPipe:['fileName']}}-->
+                <!--</a>-->
+                <!--<p no-margin>&nbsp;</p>-->
+                <!--<p no-margin style="color: #8b8b8b; font-size: 1rem">{{item.content | messageJsonPipe:['fileSize'] | fileSizePipe}}</p>-->
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="cf"></div>
+    </div>
+
+</ion-content>
+<ion-footer>
+    <form [formGroup]="messageForm">
+        <ion-list no-lines no-padding no-margin>
+            <ion-item>
+                <ion-textarea [(ngModel)]="chatBox" formControlName="message" rows="1" (focus)="showEmoji(false)"
+                              autosize
+                              style="font-size: 1.5rem; margin: 4px" placeholder="发送信息给">
+                </ion-textarea>
+                <button *ngIf="chatBox != ''" ion-button clear icon-only (click)="send(chatBox)" item-end style="padding-top: 12px">
+                    <ion-icon name="send" style="font-size: 2.2rem;"></ion-icon>
+                </button>
+            </ion-item>
+            <!--<ion-row text-center>-->
+            <!--<ion-col no-padding>-->
+            <!--<button icon-only ion-button clear middle style="height: 2rem" (click)="showEmoji(!toggled)">-->
+            <!--<ion-icon name="happy" [color]="toggled? 'primary' : 'dark-light'" style="font-size: 1.5em"></ion-icon>-->
+            <!--</button>-->
+            <!--</ion-col>-->
+            <!--<ion-col no-padding>-->
+            <!--<button icon-only ion-button clear middle style="height: 2rem" (click)="sendFile()">-->
+            <!--<ion-icon name="folder" color="dark-light" style="font-size: 1.5em"></ion-icon>-->
+            <!--</button>-->
+            <!--</ion-col>-->
+            <!--<ion-col no-padding>-->
+            <!--<button icon-only ion-button clear middle style="height: 2rem" (click)="sendCamera()">-->
+            <!--<ion-icon name="camera" color="dark-light" style="font-size: 1.5em"></ion-icon>-->
+            <!--</button>-->
+            <!--</ion-col>-->
+            <!--<ion-col no-padding>-->
+            <!--<button icon-only ion-button clear middle style="height: 2rem" (click)="sendPic()">-->
+            <!--<ion-icon name="image" color="dark-light" style="font-size: 1.5em"></ion-icon>-->
+            <!--</button>-->
+            <!--</ion-col>-->
+            <!--</ion-row>-->
+        </ion-list>
+        <!--<emoji *ngIf="toggled" (emojiSelect)="handleSelection($event)">-->
+
+        <!--</emoji>-->
+    </form>
+</ion-footer>

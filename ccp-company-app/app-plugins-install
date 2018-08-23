@@ -1,0 +1,91 @@
+$ ionic cordova plugin add cordova-plugin-camera
+$ npm install --save @ionic-native/camera
+
+ionic cordova plugin add cordova-plugin-nativestorage
+npm install --save @ionic-native/native-storage
+
+ionic cordova plugin add cordova-plugin-file-transfer
+npm install --save @ionic-native/file-transfer
+
+
+ionic cordova plugin add cordova-plugin-filepath
+npm install --save @ionic-native/file-path
+
+ionic cordova plugin add cordova-plugin-file
+npm install --save @ionic-native/file
+
+cordova plugin add https://github.com/ejiyuan/cordova-plugin-alipay.git --variable APP_ID=2016080800194089 --variable SANDBOX_MODE=true
+
+ionic cordova plugin add cordova-plugin-wechat --variable wechatappid=wx1c4ed89d8a444bde
+
+ionic cordova plugin add cordova-plugin-appavailability
+
+ionic cordova plugin add cordova-plugin-local-notification
+npm install --save @ionic-native/local-notifications
+
+npm install --save @types/jquery
+npm install --save-dev @types/node
+
+$ ionic cordova plugin add cordova-sqlite-storage
+$ npm install --save @ionic-native/sqlite
+
+/****以下是参考***/
+//本地存储
+ionic cordova plugin add cordova-plugin-nativestorage
+npm install --save @ionic-native/native-storage
+
+ionic cordova plugin add cordova-plugin-file-transfer
+npm install --save @ionic-native/file-transfer
+
+//自带toast
+ionic cordova plugin add cordova-plugin-x-toast
+npm install --save @ionic-native/toast
+
+ionic cordova plugin add cordova-plugin-network-information
+npm install --save @ionic-native/network
+
+ionic cordova plugin add cordova-plugin-appminimize
+npm install --save @ionic-native/app-minimize
+
+ionic cordova plugin add cordova-plugin-app-version
+npm install --save @ionic-native/app-version
+
+ionic cordova plugin add cordova-plugin-inappbrowser
+npm install --save @ionic-native/in-app-browser
+
+//app 提示
+ionic cordova plugin add de.appplant.cordova.plugin.local-notification
+npm install --save @ionic-native/local-notifications
+
+ionic cordova plugin add cordova-plugin-filepath
+npm install --save @ionic-native/file-path
+
+//自动升级
+ionic cordova plugin add cordova-plugin-file-opener2
+npm install --save @ionic-native/file-opener
+
+ionic cordova plugin add cordova-plugin-file
+npm install --save @ionic-native/file
+
+
+//访问外网
+ionic cordova plugin add cordova-plugin-inappbrowser
+npm install --save @ionic-native/in-app-browser
+
+
+//图片查看器
+npm install ionic-gallery-modal --save
+
+//富文本编辑器
+npm install ng2-ckeditor
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '25.3.0'
+            }
+        }
+    }
+}

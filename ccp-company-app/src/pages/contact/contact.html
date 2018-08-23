@@ -1,0 +1,52 @@
+<ion-header>
+
+    <ion-toolbar>
+
+
+        <ion-title>消息</ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="openContacts()">
+                <ion-icon name="contacts"></ion-icon>
+            </button>
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!--<button (click)="sendTestGroupMessage()">sendTestGroupMessage csyg zcgy qy</button>-->
+    <ion-list class="common-list">
+        <ion-item-group>
+            <!--<ion-list-header>消息列表</ion-list-header>-->
+            <!--<ion-item *ngFor="let chatItem of chatItems" (click)="goToChat(chatItem)">-->
+                <!--<ion-avatar item-left>-->
+                    <!--&lt;!&ndash;<img src="{{chatItem.avatarImage | avatarPipe : (chatItem.group?'assets/img/user_group.png':'')}}">&ndash;&gt;-->
+                <!--</ion-avatar>-->
+                <!--<h4>{{chatItem.friendName}}</h4>-->
+                <!--<p style="line-height: 16px">{{chatItem.lastMessage.startsWith('@#*IMAGE*#@') ? '[图片]'-->
+                    <!--: chatItem.lastMessage.startsWith('@#*FILE*#@') ? '[文件]' : chatItem.lastMessage}}</p>-->
+                <!--<ion-avatar item-right text-end>-->
+                    <!--<p text-center>{{chatItem.lastTime | chatDateTimPipe |translate}}</p>-->
+                    <!--<ion-badge *ngIf="chatItem.unreadNumber != 0 && unReadNotice" color="danger" style="font-size: 12px; line-height: 16px; padding: 1px 6px">-->
+                        <!--{{chatItem.unreadNumber}}-->
+                    <!--</ion-badge>-->
+                <!--</ion-avatar>-->
+            <!--</ion-item>-->
+            <ion-item *ngFor="let chatItem of chatItems" (click)="goToChat(chatItem)">
+                <ion-avatar item-left>
+                    <img src="{{imgUrl+chatItem.avatarImage }}" onerror="this.src='assets/imgs/avatar.png'">
+                </ion-avatar>
+                <h4>{{chatItem.friendName}}</h4>
+                <p style="line-height: 16px" *ngIf="chatItem.lastMessage">{{chatItem.lastMessage.startsWith('@#*IMAGE*#@') ? '[图片]'
+                    : chatItem.lastMessage.startsWith('@#*FILE*#@') ? '[文件]' : chatItem.lastMessage}}</p>
+                <ion-avatar item-right text-end>
+                    <p text-center>{{chatItem.lastTime | chatDateTimPipe |translate}}</p>
+                    <ion-badge *ngIf="chatItem.unreadNumber != 0 && unReadNotice" color="danger" style="font-size: 12px; line-height: 16px; padding: 1px 6px">
+                        {{chatItem.unreadNumber}}
+                    </ion-badge>
+                </ion-avatar>
+            </ion-item>
+        </ion-item-group>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,6 @@
+interface Window {
+  Wechat: any
+}
+
+
+

@@ -1,0 +1,7 @@
+{
+  "name": "ccp-company-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

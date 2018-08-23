@@ -1,0 +1,60 @@
+page-demand-detail {
+    .detail-list{
+        margin-bottom: 1rem;
+        ion-item-divider{
+            background-color: $white;
+            border-bottom: 0.55px solid $white-b !important;
+        }
+        button{
+            min-height: 3.2rem !important;
+        }
+        ion-item{
+            min-height: 3.2rem !important;
+            background-color: $white!important;
+
+            border-bottom: 0.15px solid $white-b !important;
+        }
+        p {
+            font-size: 1.3rem;
+            padding-top: 5px;
+            color: color($font-colors, dark-grey);
+        }
+        .item-label{
+            font-size: 1.3rem;
+            color: color($font-colors, dark);
+        }
+        .large-price{
+            span{
+                color: color($font-colors,dark-grey);
+                font-size: 1.3rem;
+            }
+
+        }
+        .item-inner {
+            border-bottom: 0 !important;
+        }
+
+    }
+    ion-footer{
+        font-size: 1.2rem;
+        color: color($font-colors,dark-grey);
+        min-height: 4rem;
+        background-color: $white!important;
+        text-align: center;
+        p{
+            margin: 0;
+            ion-icon{
+                font-size: 2rem;
+            }
+        }
+        .buy-button{
+            color: $white;
+            width:35%;
+            float: right;
+            background-color: color($colors,primary)!important;
+            margin:0;
+            padding: 0;
+            border-radius: 0;
+        }
+    }
+}

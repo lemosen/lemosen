@@ -1,0 +1,51 @@
+<!--
+  Generated template for the AddAppealPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>我要申诉</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="onSubmit()" [disabled]="!formGroup.valid&&!submitted">保存</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="formGroup">
+    <ion-list class="form-list">
+      <ion-item-group>
+        <ion-item>
+          <ion-label>申诉标题</ion-label>
+          <ion-input type="text" formControlName="appealTitle" placeholder="请输入申诉标题" ></ion-input>
+          <div *ngIf="formGroup.controls['appealTitle'].invalid && formGroup.controls['appealTitle'].dirty"
+               class="error-tip" item-content>{{ formGroup.controls['appealTitle'].errors|errorMessage}}
+          </div>
+        </ion-item>
+        <ion-item (click)="presentDemand()">
+          <ion-label>选择任务</ion-label>
+          <ion-note item-content>{{formGroup.value?.demand?.demandName}}</ion-note>
+          <ion-note *ngIf="!formGroup.value?.demand?.demandName" item-content>请选择</ion-note>
+          <div *ngIf="formGroup.controls['demand'].invalid && formGroup.controls['demand'].dirty"
+               class="error-tip" item-content>{{ formGroup.controls['demand'].errors|errorMessage}}
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-label>申诉内容</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-textarea rows="5"  formControlName="appealContent" placeholder="请输入申诉内容"></ion-textarea>
+          <div *ngIf="formGroup.controls['appealContent'].invalid && formGroup.controls['appealContent'].dirty"
+               class="error-tip" item-content>{{ formGroup.controls['appealContent'].errors|errorMessage}}
+          </div>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+  </form>
+</ion-content>
+

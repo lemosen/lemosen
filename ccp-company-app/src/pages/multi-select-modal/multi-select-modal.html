@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button (click)="goBack()">返回</button>
+        </ion-buttons>
+        <ion-title text-center>
+            {{title}}
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="confirmChose()">确定</button>
+        </ion-buttons>
+    </ion-navbar>
+    <!--<ion-searchbar ion-text [(ngModel)]="searchQuery" type="text" placeholder="查询..."-->
+    <!--(ionInput)="filterItems()"></ion-searchbar>-->
+</ion-header>
+
+
+<ion-content>
+    <!--<ion-refresher (ionRefresh)="doRefresh($event)">-->
+    <!--<ion-refresher-content-->
+    <!--pullingIcon="arrow-dropdown"-->
+    <!--pullingText="下拉刷新"-->
+    <!--refreshingSpinner="circles"-->
+    <!--refreshingText="正在加载...">-->
+    <!--</ion-refresher-content>-->
+    <!--</ion-refresher>-->
+    <ion-list no-lines>
+        <ion-row *ngFor="let item of items">
+            <ion-checkbox col-1 style="margin-top: 3%;" (ionChange)="onChecked(item)" [checked]="checked(item)" item-left></ion-checkbox>
+            <ion-item col-9 class="modal-item-button" >
+                <ion-avatar item-start>
+                    <img [src]="imgUrl+item?.portraitUrl" onerror="this.src='assets/imgs/avatar.png'">
+                </ion-avatar>
+                <h4>{{item?.authorName}}</h4>
+            </ion-item>
+            <!--<ion-avatar item-start>-->
+            <!--<img [src]="imgUrl+chatItem.avatarImage" onerror="this.src='assets/imgs/avatar.png'">-->
+            <!--</ion-avatar>-->
+            <!--<h4>{{chatItem.friendName}}</h4>-->
+            <!--<div item-left [ngSwitch]="objectType">-->
+            <!--<div *ngSwitchCase="'measure'"> {{item.measureName}}-->
+            <!--<p>{{item.dept?.deptName}}</p>-->
+            <!--</div>-->
+            <!--</div>-->
+        </ion-row>
+    </ion-list>
+    <!--<ion-infinite-scroll  (ionInfinite)="doInfinite($event)">-->
+    <!--<ion-infinite-scroll-content loadingSpinner="bubbles" pullingText="上拉加载"-->
+    <!--loadingText="正在加载..."></ion-infinite-scroll-content>-->
+    <!--</ion-infinite-scroll>-->
+</ion-content>

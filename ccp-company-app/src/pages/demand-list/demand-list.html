@@ -1,0 +1,62 @@
+<!--
+  Generated template for the DemandListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>任务大厅</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="openSearch()">
+                <ion-icon name="search"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-grid class="menu-grid">
+        <ion-row>
+            <ion-col col-3 (click)="presentClear()">全部</ion-col>
+            <ion-col col-3 (click)="presentCategory()">类别</ion-col>
+            <ion-col col-3 (click)="presentSortOrder()">排序</ion-col>
+            <ion-col col-3 (click)="presentClear()">清空</ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+
+
+<ion-content>
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="下拉刷新"
+                refreshingSpinner="circles"
+                refreshingText="正在加载...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <no-data-show [objs]="demands" [text]="'暂无任务！'"></no-data-show>
+    <ion-card *ngFor="let demand of demands" class="common-card demand-card">
+        <ion-card-content (click)="openDemandDetail(demand.demandId)">
+            <ion-item class="content-item">
+                <ion-avatar item-start>
+                    <img src="{{imgUrl}}{{demand?.imageUrls[0]}}">
+                </ion-avatar>
+                <h3>{{demand.demandName}}</h3>
+                <p>{{demand.summary}}</p>
+                <p ><span class="large-price">￥{{demand.budgetPrice}}</span><span style="float: right; color:#7b0000">{{demand.demandCategory.categoryName}}</span>
+                </p>
+            </ion-item>
+        </ion-card-content>
+        <ion-row>
+            <ion-col col-9 class="title">
+                {{demand.company.companyName}}
+            </ion-col>
+            <button ion-button clear small (click)="openDemandDetail(demand.demandId)">
+                <div>任务详情</div>
+            </button>
+        </ion-row>
+    </ion-card>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,66 @@
+<!--
+  Generated template for the ExecutingDemandDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>已完成的任务</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <demand-content [demand]="demand"></demand-content>
+    <ion-list *ngIf="demand?.evaluateEnabled" class="common-list detail-list">
+        <ion-item-divider>对设计师评价</ion-item-divider>
+        <ion-item>
+            <ion-label>评星</ion-label>
+        </ion-item>
+        <ion-item>
+            <div item-content class="star-div" >
+                <div *ngFor="let scoreMap of score.starMap; let indx = index">
+                    <ion-icon name="star" color="chrome3" *ngIf="score.star>=indx+1;" style="padding-right: .5em" [attr.data-index]="indx+1"></ion-icon>
+                    <ion-icon name="star-outline" color="chrome3" *ngIf="score.star<indx+1;" style="padding-right: .5em" [attr.data-index]="indx+1"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label>评价内容</ion-label>
+            <p item-content>
+                {{demand?.evaluateContent}} </ion-item>
+
+    </ion-list>
+    <ion-list *ngIf="demand?.inviteEvaluates&&demand?.inviteEvaluates.length!=0" class="common-list detail-list">
+        <ion-item-divider>对专家评价</ion-item-divider>
+        <ion-item-group *ngFor="let inviteEvaluate of demand?.inviteEvaluates">
+        <ion-item *ngIf="inviteEvaluate.hasComment">
+            <ion-label>评星</ion-label>
+        </ion-item>
+        <ion-item *ngIf="inviteEvaluate.hasComment">
+            <div item-content class="star-div" >
+                <div *ngFor="let scoreMap of score.starMap; let indx = index">
+                    <ion-icon name="star" color="chrome3" *ngIf="inviteEvaluate.overallComment>=indx+1;" style="padding-right: .5em" [attr.data-index]="indx+1"></ion-icon>
+                    <ion-icon name="star-outline" color="chrome3" *ngIf="inviteEvaluate.overallComment<indx+1;" style="padding-right: .5em" [attr.data-index]="indx+1"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item *ngIf="inviteEvaluate.hasComment">
+            <ion-label>评价内容</ion-label>
+            <p item-content>
+                {{inviteEvaluate?.evaluateContent}} </ion-item>
+        </ion-item-group>
+
+    </ion-list>
+</ion-content>
+<ion-footer class="footer-toolbar">
+    <ion-toolbar>
+        <button  *ngIf="!demand?.evaluateEnabled" ion-button outline small (click)="evaluate(demand,'design')">
+            评价设计师
+        </button>
+        <button  *ngIf="expertEnabled" ion-button outline small (click)="evaluate(demand,'export')">
+            评价专家
+        </button>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,21 @@
+page-bills {
+  [padding] h1:first-child, [padding] h2:first-child, [padding] h3:first-child, [padding] h4:first-child, [padding] h5:first-child, [padding] h6:first-child {
+    margin-top: 0rem !important;
+  }
+  .segment-ios .segment-button.segment-activated {
+    color: #c70219;
+    background-color: #ffffff;
+    opacity: 1;
+    -webkit-transition: 100ms all linear;
+    transition: 100ms all linear;
+    border-radius: 4%!important;
+  }
+
+.toolbar-ios .segment-button {
+  color: white;
+  max-width: 100px;
+  height: 2.6rem;
+  font-size: 1.2rem;
+  line-height: 2.5rem;
+}
+}

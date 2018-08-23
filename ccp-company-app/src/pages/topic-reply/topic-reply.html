@@ -1,0 +1,54 @@
+<!--
+  Generated template for the TopicReplyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{topic?.topicName}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="topic">
+        <!--<h3>{{topic?.topicName}}</h3>-->
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="{{imgUrl}}{{topic?.author.portraitUrl}}" onerror="this.src='assets/imgs/avatar.png'">
+            </ion-avatar>
+            <h4>{{topic?.author.accountName}}</h4>
+            <p>{{topic?.createTime}}</p>
+        </ion-item>
+        <p>{{topic?.topicContent}}</p>
+        <p style="margin-left: 4%;">
+            <ion-icon (click)="praise()" style="font-size: 2rem;color: #c71d19;" name="thumbs-up"><span style="margin-left: 5px;">{{topic?.praise}}</span></ion-icon>
+        </p>
+    </div>
+    <ion-list class="common-list">
+        <ion-item-divider>
+            {{topic?.replyAmount}}条评论
+            <ion-icon item-right name="refresh" (click)="refreshReply()"></ion-icon>
+        </ion-item-divider>
+        <ion-item *ngFor="let reply of replys">
+            <ion-avatar item-start>
+                <img src="{{imgUrl}}{{reply?.author.portraitUrl}}" onerror="this.src='assets/imgs/avatar.png'">
+            </ion-avatar>
+            <h4>{{reply?.author.accountName}}</h4>
+            <p>{{reply?.createTime}}</p>
+            <p>{{reply?.content}}</p>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
+<ion-footer>
+    <ion-item style="border-top: 1px solid #dededd;padding: 0px;">
+        <ion-input [(ngModel)]="comment" style="padding-left: 1rem" placeholder="请输入评论..."></ion-input>
+        <button item-right style="margin: 0" ion-button (click)="send()">发送</button>
+    </ion-item>
+</ion-footer>

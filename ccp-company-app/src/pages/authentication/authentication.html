@@ -1,0 +1,81 @@
+<!--
+  Generated template for the AuthenticationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>企业认证</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <form [formGroup]="formGroup">
+        <ion-list class="form-list">
+            <ion-item-group>
+                <ion-item-divider>基本信息</ion-item-divider>
+                <ion-item>
+                    <ion-label>企业名称</ion-label>
+                    <ion-input type="text" formControlName="companyName" placeholder="请输入企业名称" maxlength="32" ></ion-input>
+                    <div *ngIf="formGroup.controls['companyName'].invalid && formGroup.controls['companyName'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['companyName'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <ion-label>法人名称</ion-label>
+                    <ion-input type="text" formControlName="masterName" placeholder="请输入法人名称" maxlength="32" ></ion-input>
+                    <div *ngIf="formGroup.controls['masterName'].invalid && formGroup.controls['masterName'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['masterName'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+                <ion-item (click)="uploadLegalImg()">
+                    <ion-label >上传法人身份证</ion-label>
+                </ion-item>
+                <ion-item *ngIf="formGroup.value.legalImg">
+                    <img [src]="imgUrl+formGroup.value.legalImg">
+                </ion-item>
+                <ion-item>
+                    <ion-label>营业执照注册码</ion-label>
+                    <ion-input type="text" formControlName="licenseCode" placeholder="请输入营业执照码" maxlength="18"></ion-input>
+                    <div *ngIf="formGroup.controls['licenseCode'].invalid && formGroup.controls['licenseCode'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['licenseCode'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <ion-label>营业执照所在地</ion-label>
+                    <ion-input type="text" formControlName="licenseAddress" placeholder="请输入营业执照所在地" maxlength="18"></ion-input>
+                    <div *ngIf="formGroup.controls['licenseAddress'].invalid && formGroup.controls['licenseAddress'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['licenseAddress'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+                <ion-item (click)="uploadLicenseImg()">
+                    <ion-label >上传营业执照</ion-label>
+                </ion-item>
+                <ion-item *ngIf="formGroup.value.licenseImg">
+                    <img [src]="imgUrl+formGroup.value.licenseImg">
+                </ion-item>
+                <ion-item>
+                    <ion-label>企业常用地址</ion-label>
+                    <ion-input type="text" formControlName="companyAddress" placeholder="请输入企业常用地址" maxlength="18"></ion-input>
+                    <div *ngIf="formGroup.controls['companyAddress'].invalid && formGroup.controls['companyAddress'].dirty"
+                         class="error-tip" item-content>{{ formGroup.controls['companyAddress'].errors|errorMessage}}
+                    </div>
+                </ion-item>
+                <ion-item (click)="presentEducation()">
+                    <ion-label>经营范围</ion-label>
+                    <ion-note item-right>{{formGroup.value.companyScope |translate}}</ion-note>
+                </ion-item>
+            </ion-item-group>
+        </ion-list>
+        <p style="text-align: center;margin: 0 1rem">
+            <button ion-button clear class="block-button" [disabled]="!formGroup.valid&&!submitted" block (click)="onSubmit()">
+                保存
+            </button>
+        </p>
+    </form>
+
+</ion-content>

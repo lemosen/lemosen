@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{chatItem.friendName}}</ion-title>
+        <ion-buttons end>
+            <button icon-only ion-button (click)="detail()">
+                <ion-icon name="person">
+                </ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content style="background: #EBEBEB">
+    <!--<div [virtualScroll]="items" approxItemHeight="40px" no-lines>-->
+    <div padding></div>
+    <div class="message-wrapper" *ngFor="let item of chatItem.chatLog"
+         on-hold="onMessageHold($event, $index, message)">
+
+        <div text-center>
+            <ion-badge color="dark-light" style="color:#ffffff;">{{item.createDate | chatDateTimPipe|translate}}
+            </ion-badge>
+        </div>
+
+        <div *ngIf="item.sender == chatItem.friendOfAccount">
+            <img class="profile-pic left" [src]="imgUrl+chatItem.avatarImage"/>
+            <!--  wave-->
+            <div class="chat-bubble left slide-left">
+                <div class="message"
+                     [innerHTML]="item.content " autolinker>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="item.sender === myOfAccount">
+            <img class="profile-pic right" [src]="imgUrl+ 'company/'+myAvatar"/>
+            <div class="chat-bubble right slide-right">
+                <div class="message"
+                     [innerHTML]="item.content " autolinker>
+                </div>
+            </div>
+        </div>
+        <div class="cf"></div>
+    </div>
+
+
+</ion-content>
+
+<ion-footer style="background: white">
+    <form [formGroup]="messageForm">
+        <ion-list no-lines no-padding no-margin>
+            <ion-item>
+                <ion-input [(ngModel)]="chatBox" formControlName="message" style="font-size: 1.5rem; margin: 4px"
+                           placeholder="发送信息给 {{chatItem.friendName}} ...">
+                </ion-input>
+                <button *ngIf="chatBox != ''" ion-button clear icon-only (click)="send(chatBox)" item-end style="padding-top: 12px">
+                    <ion-icon name="send" style="font-size: 2.2rem;"></ion-icon>
+                </button>
+            </ion-item>
+        </ion-list>
+    </form>
+
+</ion-footer>
+

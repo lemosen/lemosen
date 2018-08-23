@@ -1,0 +1,50 @@
+<!--
+  Generated template for the AddTopicPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>发帖</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="formGroup">
+    <ion-list class="form-list">
+      <ion-item-group>
+        <ion-item-divider>发帖信息</ion-item-divider>
+        <ion-item>
+          <ion-label>标题</ion-label>
+          <ion-input type="text" formControlName="topicName" placeholder="请输入标题" maxlength="64"></ion-input>
+          <div *ngIf="formGroup.controls['topicName'].invalid && formGroup.controls['topicName'].dirty"
+               class="error-tip" item-content>{{ formGroup.controls['topicName'].errors|errorMessage}}
+          </div>
+        </ion-item>
+        <ion-item (click)="presentBoards()">
+          <ion-label>所属板块</ion-label>
+          <ion-note item-right>{{formGroup.value?.board?.boardName}}</ion-note>
+          <ion-note *ngIf="!formGroup.value.board" item-right>请选择</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>内容</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-textarea rows="5"  formControlName="topicContent" placeholder="请输入内容"></ion-textarea>
+          <div *ngIf="formGroup.controls['topicContent'].invalid && formGroup.controls['topicContent'].dirty"
+               class="error-tip" item-content>{{ formGroup.controls['topicContent'].errors|errorMessage}}
+          </div>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+  </form>
+  <p style="text-align: center;margin: 0 1rem">
+    <button ion-button clear class="block-button" [disabled]="!formGroup.valid&&!submitted" block (click)="onSubmit()">
+      提交
+    </button>
+  </p>
+</ion-content>

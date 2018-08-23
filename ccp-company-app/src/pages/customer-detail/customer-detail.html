@@ -1,0 +1,58 @@
+<!--
+  Generated template for the CustomerDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{author?.authorName}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list class="common-list">
+        <ion-item>
+            <ion-avatar item-left>
+                <img src="{{imgUrl+author?.portraitUrl }}" onerror="this.src='assets/imgs/avatar.png'">
+            </ion-avatar>
+            <h4>{{author?.authorName}}</h4>
+        </ion-item>
+        <ion-item>
+            <ion-label>账户名</ion-label>
+            <p item-content>{{author?.accountName}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-label>手机号</ion-label>
+            <p item-content>
+                {{author?.mobile}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-label>邮箱</ion-label>
+            <p item-content>
+                {{author?.email}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-label>头衔</ion-label>
+            <p item-content>
+                {{author?.honour |translate}}</p>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer >
+    <ion-row>
+        <ion-col col-6>
+            <button class="footer-button" full ion-button [disabled]="!formGroup.valid&&!submitted" block color="primary"
+                    (click)="removeContact()">保存
+            </button>
+        </ion-col>
+        <ion-col col-6>
+            <button class="footer-button" full ion-button [disabled]="!formGroup.valid&&!submitted" block color="red"
+                    (click)="onSubmit(false)">提交审核
+            </button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

@@ -1,0 +1,50 @@
+<!--
+  Generated template for the PayModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>确认充值</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list class="common-list">
+        <ion-item>
+            <ion-label>余额 ￥{{company.totalBalance}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>充值金额</ion-label>
+            <ion-input class="price" [(ngModel)]="paymentModel.transactionPrice"></ion-input>
+        </ion-item>
+        <ion-item-divider>支付方式</ion-item-divider>
+        <ion-item-group radio-group [(ngModel)]="paymentModel.payedMethod">
+            <ion-item>
+                <ion-label>银联支付</ion-label>
+                <ion-radio item-right [value]="'UNIONPAY'" [disabled]="payTypes[1].disabled"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>微信支付</ion-label>
+                <ion-radio [value]="'WECHAT'"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>支付宝支付</ion-label>
+                <ion-radio [value]="'ALIPAY'"></ion-radio>
+            </ion-item>
+        </ion-item-group>
+    </ion-list>
+</ion-content>
+<ion-footer>
+    <ion-row>
+        <ion-col style="padding: 0">
+            <button ion-button full class="pay-btn" style="margin: 0" (click)="pay()" [disabled]="!paymentModel.payedMethod">立即支付</button>
+        </ion-col>
+        <!--<ion-col style="padding: 0">-->
+        <!--<button clear block ion-button class="footer-button ok-button" (click)="applyWithdraw()">-->
+        <!--提现-->
+        <!--</button>-->
+        <!--</ion-col>-->
+    </ion-row>
+</ion-footer>

@@ -1,0 +1,49 @@
+<!--
+  Generated template for the ContactsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>联系人</ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="addGroup()">
+                添加群组
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list class="button-list contact-list">
+        <ion-item-divider>测试用聊天用户</ion-item-divider>
+        <button ion-item (click)="send(author)">
+            <ion-avatar item-start>
+                <img src="http://218.16.121.13:8501/web/upload/face//designer/csyg.jpg">
+            </ion-avatar>
+            <h4>印国</h4>
+            <p>csyg</p>
+        </button>
+        <ion-item-divider>我的群组</ion-item-divider>
+        <button ion-item *ngFor="let chatItem of chatItems |filterArray : 'group' : true |sortPipe :'lastTime' :true" (click)="goToChat(chatItem)">
+            <ion-avatar item-start>
+                <img [src]="imgUrl+chatItem.avatarImage" onerror="this.src='assets/imgs/avatar.png'">
+            </ion-avatar>
+            <h4>{{chatItem.friendName}}</h4>
+            <!--<p>{{chatItem.friendName}}</p>-->
+        </button>
+        <ion-item-divider>我的联系人</ion-item-divider>
+        <button ion-item *ngFor="let chatItem of chatItems |filterArray : 'group' : false|sortPipe :'lastTime' :true" (click)="goToChat(chatItem)">
+            <ion-avatar item-start>
+                <img [src]="imgUrl+chatItem.avatarImage" onerror="this.src='assets/imgs/avatar.png'">
+            </ion-avatar>
+            <h4>{{chatItem.friendName}}</h4>
+            <!--<p>{{chatItem.friendName}}</p>-->
+        </button>
+    </ion-list>
+</ion-content>

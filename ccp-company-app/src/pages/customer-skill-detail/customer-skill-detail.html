@@ -1,0 +1,78 @@
+<!--
+  Generated template for the CustomerSkillDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{customerSkillLevel?.skillLevel?.levelName}}</ion-title>
+        <ion-title *ngIf="!customerSkillLevel?.skillLevel">新手任务</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list class="common-list detail-list">
+        <ion-item-divider>技能任务详情</ion-item-divider>
+        <ion-item>
+            <ion-label>任务名称</ion-label>
+            <p item-content>{{customerSkillLevel?.skillTask?.taskName}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-label>任务分类</ion-label>
+            <p item-content>{{customerSkillLevel?.skillTask?.demandCategory?.categoryName}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-label>所需技能等级</ion-label>
+            <p item-content><span *ngFor="let skillLevel of customerSkillLevel?.skillTask?.skillLevels">{{skillLevel.levelName}} </span></p>
+        </ion-item>
+        <ion-item>
+            <ion-label>任务周期</ion-label>
+            <p item-content>
+                {{customerSkillLevel?.skillTask.demandCycle}}天</ion-item>
+        <ion-item>
+            <ion-label>开始日期</ion-label>
+            <p item-content>{{customerSkillLevel?.skillTask.createTime}}
+            <p *ngIf="!customerSkillLevel?.skillTask.createTime" item-content>无时间
+        </ion-item>
+        <ion-item>
+            <ion-label>任务简介</ion-label>
+            <p item-content>
+                {{customerSkillLevel?.skillTask.summary}}</ion-item>
+        <ion-item>
+            <ion-label>任务需求说明</ion-label>
+            <p item-content>
+                {{customerSkillLevel?.skillTask.detailInfo}}</ion-item>
+
+
+        <ion-item-divider>技能鉴定详情</ion-item-divider>
+        <!--<ion-item>-->
+        <!--<ion-label>技能名称</ion-label>-->
+        <!--<p item-content class="large-price">￥{{demand?.budgetPrice}} </p>-->
+        <!--</ion-item>-->
+        <ion-item>
+            <ion-label>技能鉴定专家</ion-label>
+            <p item-content>{{customerSkillLevel?.expert?.customerName}}</p>
+        </ion-item>
+        <ion-item  *ngIf=" customerSkillLevel?.skillLevelState!='CERTIFICATION_FAILURE'">
+            <ion-label>是否优秀</ion-label>
+            <ion-toggle [(ngModel)]="customerSkillLevel.skillLevelState"  disabled checked="false"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>技能鉴定时间</ion-label>
+            <p item-content>{{customerSkillLevel?.certificationTime}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-label>申请信息</ion-label>
+            <p item-content>
+                {{customerSkillLevel?.applyInfo}}</ion-item>
+        <ion-item>
+            <ion-label>鉴定信息</ion-label>
+            <p item-content>
+                {{customerSkillLevel?.certificationInfo}}</ion-item>
+    </ion-list>
+</ion-content>

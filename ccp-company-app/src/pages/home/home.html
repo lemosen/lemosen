@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-toolbar  >
+        <ion-title>我的工作</ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="openNotifications()">
+                <ion-icon name="notifications"></ion-icon>
+                <ion-badge *ngIf="workCounts?.notices!=0" item-end>{{workCounts?.notices}}</ion-badge>
+            </button>
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list class="common-list" style="margin-bottom: 1rem">
+        <ion-item-group>
+            <ion-item-divider>我的任务</ion-item-divider>
+            <button ion-item (click)="openWorks()">
+                <ion-icon name="briefcase" item-start></ion-icon>
+                待办任务
+                <ion-badge *ngIf="workCounts?.workings!=0" item-end>{{workCounts?.workings}}</ion-badge>
+            </button>
+            <button ion-item (click)="openAuditDemands()">
+                <ion-icon name="pricetags" item-start></ion-icon>
+                发布的任务
+                <ion-badge *ngIf="workCounts?.audits!=0" item-end>{{workCounts?.audits}}</ion-badge>
+            </button>
+            <button ion-item (click)="openBidding()">
+                <ion-icon name="logo-buffer" item-start></ion-icon>
+                正在招标的任务
+                <ion-badge *ngIf="workCounts?.workings!=0" item-end>{{workCounts?.biddings}}</ion-badge>
+            </button>
+            <button ion-item (click)="openExecuting()">
+                <ion-icon name="construct" item-start></ion-icon>
+                进行中的任务
+                <ion-badge *ngIf="workCounts?.workings!=0" item-end>{{workCounts?.executings}}</ion-badge>
+            </button>
+            <button ion-item (click)="openFinished()">
+                <ion-icon name="folder-open" item-start></ion-icon>
+                已结束的任务
+                <ion-badge *ngIf="workCounts?.workings!=0" item-end></ion-badge>
+            </button>
+
+        </ion-item-group>
+
+        <ion-item-group>
+            <ion-item-divider>其它</ion-item-divider>
+            <button ion-item (click)="openBBS()">
+                <ion-icon name="contacts" item-start></ion-icon>
+                设计者社区
+            </button>
+
+        </ion-item-group>
+    </ion-list>
+    <ion-item-divider class="dym-title">最新动态</ion-item-divider>
+    <ion-card class="common-card dym-card"  *ngFor="let s of sms">
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="assets/imgs/message.jpg">
+            </ion-avatar>
+            <h4>{{s?.accountName}}<span style="float: right">{{s?.createTime}}</span></h4>
+            <p>{{s?.smsType|translate}}</p>
+        </ion-item>
+        <ion-card-content>
+            {{s?.content}}
+        </ion-card-content>
+    </ion-card>
+</ion-content>

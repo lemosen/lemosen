@@ -1,0 +1,13 @@
+page-about {
+  .banner {
+    position: relative;
+    .logo-title{
+      position: absolute;
+      font-size: 2.2rem!important;
+      top: 30%;
+      left: 50%;
+      transform:translate(-50%,-50%);
+      color: $white;
+    }
+  }
+}

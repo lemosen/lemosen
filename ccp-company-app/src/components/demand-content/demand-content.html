@@ -1,0 +1,57 @@
+<!-- Generated template for the DemandContentComponent component -->
+<div>
+    <ion-slides style="height: auto">
+        <ion-slide *ngFor="let imageUrl of demand?.imageUrls">
+            <img src="{{imgUrl}}{{imageUrl}}">
+        </ion-slide>
+    </ion-slides>
+    <ion-list class="common-list detail-list">
+        <ion-item-divider class="demandName">{{demand?.demandName}}</ion-item-divider>
+        <ion-item>
+            <ion-label>预算价格</ion-label>
+            <p item-content class="large-price">￥{{demand?.budgetPrice}} </p>
+        </ion-item>
+        <ion-item *ngIf="!demandState">
+            <ion-label>合同价格</ion-label>
+            <p item-content class="large-price">￥{{demand?.dealPrice}} </p>
+        </ion-item>
+        <ion-item>
+            <ion-label>完成周期</ion-label>
+            <p item-content>{{demand?.demandCycle}}天</p>
+        </ion-item>
+        <ion-item *ngIf="!demandState">
+            <ion-label>投标周期</ion-label>
+            <p item-content>{{demand?.dealCycle}}天</p>
+        </ion-item>
+        <ion-item>
+            <ion-label>竞标截止时间</ion-label>
+            <p item-content>{{demand?.abortDate}}</p>
+        </ion-item>
+        <!--*ngIf="demand.demandState!='BIDDING' && demand.demandState=='BIDDED'&& demand.demandState=='EDIT_CONTRACT' && demand.demandState=='REVIEW_CONTRACT'"-->
+        <!--<ion-item >
+            <ion-label>合同签订日期</ion-label>
+            <p item-content>{{demand.contractTime}}</p>
+        </ion-item>-->
+        <ion-item>
+            <ion-label>所需技能等级</ion-label>
+            <p item-content><span *ngFor="let skillLevel of demand?.skillLevels">{{skillLevel.levelName}} </span><span *ngIf="demand?.skillLevels==0">无</span></p>
+        </ion-item>
+        <ion-item>
+            <ion-label>任务简介</ion-label>
+        </ion-item>
+        <ion-item>
+            <p item-content>{{demand?.summary}}</p>
+            <!--<ion-note item-content>-->
+            <!--{{demand?.summary}}-->
+            <!--</ion-note>-->
+        </ion-item>
+        <ion-item>
+            <ion-label>需求说明</ion-label>
+        </ion-item>
+        <ion-item>
+            <p item-content [innerHtml]="demand?.detailInfo">
+
+            </p>
+        </ion-item>
+    </ion-list>
+</div>

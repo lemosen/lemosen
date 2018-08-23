@@ -1,0 +1,11 @@
+page-expert-skill-detail {
+  a[disabled], button[disabled], [ion-button][disabled] {
+    cursor: none;
+     opacity: 1;
+     pointer-events: none;
+  }
+  .item-inner{
+    background-image: none!important;
+    padding-right: 8px!important;
+  }
+}
